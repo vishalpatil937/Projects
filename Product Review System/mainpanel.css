@@ -1,0 +1,59 @@
+.panel
+{
+ border:2px solid black ;
+ background-color:#8784DC; 
+ height:170px;
+ border-radius:20px;
+ padding:2px;
+ text-align:center;
+}
+.item
+{
+border:1px solid black;
+height:300px;
+width:328px;
+border-radius:20px;
+float:left;	
+}
+.image:hover
+{
+	height:300px;
+	width:328px;
+	-webkit-transition:height 1.5s;
+	-webkit-transition:width 1.5s;
+	}
+.image
+{
+height:250px;
+width:300px;
+	
+}
+.home:hover
+{
+	background-color:yellow;
+}
+.home
+{
+	background-color:white;
+	margin-right:50px;
+}
+.additem
+{margin-top:50px;
+	margin-left:400px;
+	margin-right:400px;
+	border-radius:20px;
+	border:1px solid black;
+	width:500px;
+	height:400px;
+	background-color:#d3d3d3;
+}
+.textbox
+{
+width:210px;
+border:1px solid black;
+height:25px;
+padding:3px;
+}
+.td{
+margin:5px;
+}

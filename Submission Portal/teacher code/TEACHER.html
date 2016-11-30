@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Class Connect</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cuprum:700" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  <link href="css/responsive-calendar.css" rel="stylesheet">
+<!-- 	<link rel="stylesheet" type="text/css" href="sidenav.css"> -->
+	<link rel="stylesheet" type="text/css" href="submission.css">
+<body>
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand" data-toggle="tab" data-target="#Home">
+                    <a href="#">
+                        Class Connect
+                    </a>
+                </li>
+                <hr class="hr">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Semester<span class="caret"></span></a>
+          				<ul class="dropdown-menu " role="menu">
+          				<li><a href="#" >--Select--</a></li>
+          				<li><a  href="#" onclick="getsub(1)">1</a></li>
+          				<li><a href="#" onclick="getsub(2)">2</a></li>
+          				<li><a href="#" onclick="getsub(3)">3</a></li>
+          				<li><a href="#" onclick="getsub(4)">4</a></li>
+          				<li><a href="#" onclick="getsub(5)">5</a></li>
+          				<li><a href="#" onclick="getsub(6)">6</a></li>
+          				<li><a href="#" onclick="getsub(7)">7</a></li>
+          				<li><a href="#" onclick="getsub(8)">8</a></li>
+          				</ul>
+          			</li> 
+				
+        				<li class="dropdown">
+          				<a href="#" class="dropdown-toggle" id="subject_list" data-toggle="dropdown">Subject<span class="caret"></span></a>
+          				<ul class="dropdown-menu" id= "sub" role="menu">
+          		      
+          				</ul>
+        				</li>		
+                
+        			 	
+                <li data-toggle="tab" data-target="#newAssign">
+                 <a href="#">New Assignment</a>
+                </li>
+                
+                <li  data-toggle="tab" id="Unchecked_li" data-target="#uncheckedassign">
+                    <a href="#" onclick="getassign(2)" >Unchecked Assignments</a>
+                </li>
+                <li data-target="#Submission" data-toggle="tab">
+                    <a href="">Submit Assignment</a>
+                </li>-->
+                <li data-target="#Home" class="active" data-toggle="tab">
+                    <a href="#">Home</a>
+                </li>
+                <li class="logout" id="logout">
+                  <button class="btn logoutbtn" data-toggle="modal" data-target="#confirm-lo">Logout <span class="glyphicon glyphicon-log-out"></span></button>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+         
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+        <!-- Nav Control -->
+        	 <div class="barcontainer" >
+            <div id="b1"></div>
+            <div id="b2"></div>
+            <div id="b3"></div>
+          </div>
+          <!-- /Nav Control -->
+
+          <div class="container-fluid">
+            <div class="load-bar" id="load-bar">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>                
+            </div>
+            
+            <!-- <div class="alert" id="alert"><b>Submitted Successfully!</b></div> -->
+            <br><br>
+            <div class="row">
+              <div class="col-lg-12">
+
+                <div class="modal fade" tabindex="-1" id="confirm-lo">
+                  <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                          <span>&times;</span>
+                        </button>
+                        <h4 class="modal-title"><p>Are you sure you want to Logout?</p></h4>
+                      </div>
+                      <div class="modal-body">
+                        <center>
+                          <button type="button" class="btn btn-default btn-md" >Yes</button>
+                            &nbsp;&nbsp;&nbsp;
+                          <button type="button" class="btn btn-default btn-md" data-dismiss="modal">No</button>
+                       </center>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <!-- All the info about assignments will be displayed here  ,Redirection by adding <a data toggle="modal" data-target="togglemodal"></a>  -->
+                <div class="modal fade" tabindex="-1" id="togglemodal" >
+                  <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <center><h3 class="modal-title toggle-header" >Assignment Details</h3></center>
+                      </div>
+                      <div class="modal-body">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                
+                <!-- MOdal End -->
+                <div class="tab-content"> <!-- All tabs are in this div-->
+               
+                <!-- Home Panel -->
+                <div id="Home" class="tab-pane active">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header" id="header">Calender</div>                    
+                    </div>
+                  </div>
+                  <div class="responsive-calendar" style="height:50%;width: 100%;">
+                    <div class="controls">
+                      <a class="pull-left" data-go="prev"><span class=" glyphicon glyphicon-chevron-left">Prev</span></a>
+                      <h4><span data-head-year></span> <span data-head-month></span></h4>
+                      <a class="pull-right" data-go="next">Next<span class=" glyphicon glyphicon-chevron-right"></span></a>
+                    </div><hr/>
+                    <div class=" row day-headers">
+                      <div class="day header">Mon</div>
+                      <div class="day header">Tue</div>
+                      <div class="day header">Wed</div>
+                      <div class= "day header">Thu</div>
+                      <div class="day header">Fri</div>
+                      <div class="day header">Sat</div>
+                      <div class="day header">Sun</div>
+                    </div>  
+                    <div class="days" data-group="days">
+                      
+                    </div>
+                  </div>
+                  <div class="container status-box">
+                    <center>
+                      <div class="container-fluid stat_container">
+                        <div class="status" id="submitted"  name="submitted"><b>10</b></div>
+                        <div  class="stat_caption"><b>Submitted</b></div>
+                      </div>
+                      <div class="container-fluid stat_container">
+                        <div class="status" id="Remaining" name="Remaining">15</div>
+                        <div  class="stat_caption"><b>Remaining</b></div>
+                      </div>
+                      <div class="container-fluid stat_container">
+                        <div class="status" id="checked" name="checked">6</div>
+                        <div class="stat_caption" style="padding-left: 15px;"><b>Graded</b></div>
+                      </div>
+                      <div class="container-fluid stat_container">
+                        <div class="status" id="unchecked" name="unchecked">4</div>
+                        <div  class="stat_caption"><b>Ungraded</b></div>
+                      </div>
+                    </center>
+                  </div>
+
+                </div>
+                <!-- Home ends -->
+
+		            <div class="tab-pane" id="AssignmentList" style="overflow:auto;">
+                  
+                  <div class="modal-dialog" id="Assignlist" style="width: 100%;height: auto;margin-top: 30px">
+                    <div class="modal-content">
+                      <div class="modal-header" id="header">Assignment List</div>                                                        
+                      <div class="modal-body" style="min-height: 200px;max-height:auto;overflow: auto;resize: vertical;">
+                      <!-- ithe assignment list   -->
+                        <div class="loader" ></div>
+                      </div>
+          					</div>
+          			  </div>
+
+                  <div class="modal-dialog" id="AssignmentDetails" style="width:100%;height: auto;">
+                    <div class="modal-content">
+                      <div class="modal-header" id="header">Assignment Details</div>
+                      <div class="modal-body" >
+                    <!-- Assignment Details Here -->
+                        <div class="loader" style="margin-top:20px;"></div>
+                      </div>
+                    </div> 
+                  </div>
+          	    </div>
+		            
+                  <!-- Commented tab-pane -->
+
+                <div class="tab-pane" id="newAssign">
+                  <div class="alert" id="alert"><b>Submitted Successfully!</b></div>
+                  
+                  <div class="modal-dialog" style="width: 100%;height: auto;">
+                    <div class="modal-content">
+                      <div class="modal-header" id="header">New Assignment</div>                                                        
+                      <div class="modal-body" id="newAssign_ajax">
+                        
+                          <form id='submission'  method='POST' enctype='multipart/form-data'>                      Semester:
+                          <select  class="form-control select" onchange="getsubdrop(this.value)" name="sem" id="sem" class="demoInputBox" >
+                            <option  value="">Select semester</option>
+                            <option value='1'  >1</option>
+                            <option value='2' >2</option>
+                            <option value='3'>3</option>
+                            <option value='4' >4</option>
+                            <option value='5' >5</option>
+                            <option value='6' >6</option>
+                            <option value='7' >7</option>
+                            <option value='8' >8</option>
+                          </select>
+                          <br>
+                          
+                            SUBJECT:
+                            <select class="form-control select" name="subject" id="subjlist_drop" class="demoInputBox">
+                               
+                              <!-- Dynamic from db -->
+                            </select>
+                          
+                          <br>
+                          
+                   
+                          Mode :
+                            <input name="mode" value="Softcopy" type="radio" /> Softcopy
+                            &nbsp;&nbsp;&nbsp;
+                            <input name="mode" value="Hardcopy" type="radio"/> Hardcopy
+                          <br>
+                          <br>
+                        
+                            <label for="inputlg">Description</label>
+                            <input class="form-control input-lg" id="inputlg" name="description" type="text">
+                         
+                          <br>
+                         <!-- / UPLOAD(if required)<input type='file' id='file' name='file'><br> -->
+                          UPLOAD:<input type='file'  id='file' name='file'><!-- <span class="glyphicon glyphicon-folder-open"></span> -->
+                          <br><br>
+                          
+                           Submission Date : 
+                           <input type='date' class="form-control" id="deadline" name="deadline" placeholder="MM/DD/YYYY"  />
+                           
+                          <br><br>
+                          <center><button type="reset" class="btn" id="submit">Reset</button>&nbsp;&nbsp;&nbsp;<button type="submit" class="btn" id="submit" style="width:150px;padding-top: 7px;">Post Assignment<span class="glyphicon glyphicon-send"></span></button></center> 
+                          </form>                                     
+                        
+                      </div> <!--MOdal-Body end-->
+                    </div> <!--MOdal COntent end-->
+                  </div> <!--MOdal Dialog end-->  
+                </div> <!--Tab pane newAssign ENd--> 
+                  
+               
+              
+
+            </div>
+           <
+          </div>
+          </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+  </div></div>
+
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <script src="js/responsive-calendar.js"></script>
+  <script type="text/javascript" src="js/animateNumber.js"></script>
+  <script type="text/javascript" src="submission.js"></script>
+  
+</body>
+</html>
+
